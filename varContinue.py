@@ -1,5 +1,6 @@
 from numpy import zeros
 
+
 def entrerValeurC(T, C):
     i = 0
     print("Entrer les valeurs de variable X[i], ensuite X[(i)+1] puis les effectifs ni:")
