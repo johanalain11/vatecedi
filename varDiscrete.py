@@ -1,7 +1,6 @@
 from math import sqrt
 from numpy import zeros
 
-
 def entrerValeur(T, C):
     i = 0
     print("Entrer les valeurs de variable Xi puis les effectifs ni:")
