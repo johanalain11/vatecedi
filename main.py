@@ -15,7 +15,6 @@ window.title("Valeurs de tendance centrale et de dispersion")
 window.minsize(720, 480)
 icon = PhotoImage(master=window, file='cluster.png')
 window.wm_iconphoto(True, icon)
-
 #window.wm_iconbitmap('cluster.ico')
 
 window.mainloop()
