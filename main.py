@@ -1,24 +1,16 @@
+import app
 from varDiscrete import *
 from varContinue import *
+from app import *
 import os
 import sys
 from tkinter import *
-
 
 # En tête
 header = "PROGRAMME"
 header = header.center(60, "-")
 print(header)
 
-# Fenêtre
-window = Tk()
-window.title("Valeurs de tendance centrale et de dispersion")
-window.minsize(720, 480)
-icon = PhotoImage(master=window, file='cluster.png')
-window.wm_iconphoto(True, icon)
-#window.wm_iconbitmap('cluster.ico')
-
-window.mainloop()
 
 def div():
     h = ""
@@ -36,8 +28,6 @@ while v == 0:
     try:
         if x == "1" or x == "2":
             v = int(x)
-        else:
-            v == 0
     except:
         print("Erreur: la valeur n'est pas valide")
 div()
