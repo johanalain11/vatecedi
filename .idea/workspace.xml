@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="UPDATE App.py">
-      <change afterPath="$PROJECT_DIR$/Vatecedi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vatecedi2.png" afterDir="false" />
+    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="UPDATE App.py - Ajout des frames de renseignement des valeurs">
+      <change afterPath="$PROJECT_DIR$/function.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
@@ -60,18 +59,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main (2).executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.varDiscrete.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/johan/PROJET COMPÉTENCES JOHAN/Projet 2.7&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main (2).executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.varDiscrete.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/johan/PROJET COMPÉTENCES JOHAN/Projet 2.7",
+    "settings.editor.selected.configurable": "Errors"
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="Projet 2.7" is-module-sdk="true">
@@ -221,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737393509085</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="UPDATE App.py - Ajout des frames de renseignement des valeurs">
+      <option name="closed" value="true" />
+      <created>1737489536096</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1737489536096</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -230,17 +237,30 @@
     <MESSAGE value="Update python files" />
     <MESSAGE value="Ajout de la classe d'interface App.py" />
     <MESSAGE value="UPDATE App.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="UPDATE App.py" />
+    <MESSAGE value="UPDATE App.py - Ajout des frames de renseignement des valeurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="UPDATE App.py - Ajout des frames de renseignement des valeurs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/function.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="7" />
+          <line>48</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

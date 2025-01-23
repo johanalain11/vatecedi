@@ -7,12 +7,13 @@ window.title("Valeurs de tendance centrale et de dispersion")
 window.minsize(720, 480)
 icon = PhotoImage(master=window, file='cluster.png')
 window.wm_iconphoto(True, icon)
+
 f=("Helvetica", 18, "bold")
 f2=("Helvetica", 15)
 t1="Entrer le nombre de variables: "
-nbVar = 0
 i = 1
-T = zeros((2, nbVar), int)
+T = zeros((2, 30), int)
+nbVar : int = 0
 
 def page1():
     frameP1.pack(fill=BOTH, expand=True)
@@ -30,31 +31,42 @@ def page3():
     frameP1.pack_forget()
 
 # Fonction qui enregistre le nombre de variables
-def valid():
-    y = nbVarEntry.get()
-    try :
-        nbVar = int(y)
-        if nbVar <= 0 :
-            raise ValueError
-    except :
-        nbVarEntry.config(bg='red', fg='white')
-    else :
-        nbVarValid.grid_forget()
-        nbVarOk.grid(row=1, column=0, pady=10, padx=5, columnspan=2)
-        nbVarEntry.config(text=" ", bg = "white")
-        nbVarLabel.config(text="Entrer X[{}]: ".format(i))
+def valid(nbVar: int = nbVar, i: int = i):
+    if nbVarValid.cget("text") != "OK":
+        y = nbVarEntry.get()
+        print("Bouton Valider cliqué")
+        try :
+            nbVar = int(y)
+            if nbVar <= 0 :
+                raise ValueError
+        except :
+            nbVarEntry.config(bg='red', fg='white')
+        else :
+            print("nbVar = ", nbVar)
+            nbVarValid.config(text="OK")
+            nbVarEntry.delete(0, END)
+            nbVarEntry.config(bg = "white", fg = "black")
+            nbVarLabel.config(text="Entrer X[{}]: ".format(i))
+    else:
+        saveData(nbVar, i)
+    return nbVar, i
 
-def saveData(nbVar, T, i) :
-    if i in range(2, nbVar+1) :
+def saveData(nbVar: int = nbVar, i: int = i) :
+    c= nbVar+1
+    print("Bouton OK cliqué")
+    if i in range(0, nbVar+1) :
         i = i + 1
         c = nbVarEntry.get()
-        T[0, i-2] = int(c)
-        nbVarEntry.config(text=" ", bg="white")
+        T[0, i-1] = int(c)
+        nbVarEntry.delete(0, END)
+        print("Valeur entrée")
+        # nbVarEntry.config(bg="white", fg = "black")
         nbVarLabel.config(text="Entrer X[{}]: ".format(i))
-    elif i == nbVar :
-        nbVarOk.grid_forget()
+    else :
 
-    return i, T
+        print("Valeur non entrée")
+
+    return nbVar, i
 
 
 # PREMIERE PAGE
@@ -86,11 +98,10 @@ s1= SEPARATOR
 frameP22 = Frame(frameP2)
 nbVarLabel = Label(frameP22, text=t1, font=f2)
 nbVarLabel.grid(row=0, column=0, pady=10, padx=5)
-nbVarEntry = Entry(frameP22, textvariable=nbVar, font=f2, bg = "#defcfb")
+nbVarEntry = Entry(frameP22, font=f2, bg = "#defcfb")
 nbVarEntry.grid(row=0, column=1, pady=10, padx=5)
 nbVarValid = Button(frameP22, text="Valider", font=f2, command=valid)
 nbVarValid.grid(row=1, column=0, pady=10, padx=5, columnspan=2)
-nbVarOk = Button(frameP22, text="OK", font=f2, command=saveData(nbVar, T, i))
 frameP22.pack(fill=X)
 
 # Bouton Retour
