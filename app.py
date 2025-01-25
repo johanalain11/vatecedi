@@ -1,5 +1,6 @@
 from tkinter import *
-from numpy import zeros
+from varDiscrete import *
+from varContinue import *
 
 
 window = Tk()
@@ -12,8 +13,10 @@ f=("Helvetica", 18, "bold")
 f2=("Helvetica", 15)
 t1="Entrer le nombre de variables: "
 i = 1
+boolean = False
 T = zeros((2, 30), int)
-nbVar : int = 0
+a = 0
+nbVar = None
 
 def page1():
     frameP1.pack(fill=BOTH, expand=True)
@@ -31,10 +34,11 @@ def page3():
     frameP1.pack_forget()
 
 # Fonction qui enregistre le nombre de variables
-def valid(nbVar: int = nbVar, i: int = i):
-    if nbVarValid.cget("text") != "OK":
+def valid():
+    global nbVar, i, boolean, a
+    if nbVarValid.cget("text") == "Valider":
         y = nbVarEntry.get()
-        print("Bouton Valider cliqué")
+        print("**** Bouton Valider cliqué")
         try :
             nbVar = int(y)
             if nbVar <= 0 :
@@ -42,30 +46,50 @@ def valid(nbVar: int = nbVar, i: int = i):
         except :
             nbVarEntry.config(bg='red', fg='white')
         else :
+            print("a = " + str(a))
+            print("i = " + str(i))
             print("nbVar = ", nbVar)
             nbVarValid.config(text="OK")
             nbVarEntry.delete(0, END)
             nbVarEntry.config(bg = "white", fg = "black")
             nbVarLabel.config(text="Entrer X[{}]: ".format(i))
-    else:
-        saveData(nbVar, i)
-    return nbVar, i
+    elif nbVarValid.cget("text") == "OK":
+        saveData(nbVar)
+        if i == nbVar :
+            if boolean == False :
+                boolean = True
+                i = 1
+                a = 1
+        elif (i == nbVar-1) & boolean == True :
+            nbVarValid.config(text="Calculer")
+    elif nbVarValid.cget("text") == "Calculer":
+        saveData(nbVar)
+        nbVarEntry.config(bg = "black", fg = "white")
+        nbVarLabel.config(text="Résultats", bg='#defcfb')
+        afficherMatrice(T, nbVar, 2)
+        nbVarValid.config(state=DISABLED)
 
-def saveData(nbVar: int = nbVar, i: int = i) :
-    c= nbVar+1
-    print("Bouton OK cliqué")
-    if i in range(0, nbVar+1) :
-        i = i + 1
+
+def saveData(nbVar: int = nbVar) :
+    global T, i, a
+    print("**** Bouton OK cliqué")
+    if i in range(1, nbVar+1) :
         c = nbVarEntry.get()
-        T[0, i-1] = int(c)
+        T[a, i-1] = int(c)
         nbVarEntry.delete(0, END)
-        print("Valeur entrée")
+        print("a = " + str(a))
+        print("Valeur entrée: " + c)
         # nbVarEntry.config(bg="white", fg = "black")
-        nbVarLabel.config(text="Entrer X[{}]: ".format(i))
+        i = i + 1
+        if a == 0:
+            nbVarLabel.config(text="Entrer X[{}]: ".format(i))
+        else:
+            nbVarLabel.config(text="Entrer n[{}]: ".format(i))
+        nbVarValid.flash()
     else :
-
         print("Valeur non entrée")
-
+        nbVarValid.config(text="Calculer")
+    print("i = " + str(i))
     return nbVar, i
 
 
@@ -76,7 +100,7 @@ labelP1 = Label(frameP1, text="Vatecedi", font=("Algerian", 25))
 subLabelP1= Label(frameP1, text="Valeurs de tendance centrale et de dispersion", font=f)
 labelP1.pack(expand=True, fill=BOTH)
 subLabelP1.pack(expand=True, fill=BOTH)
-button1P1 = Button(frameP1, text="Variables discrètes", font=f, command=page2)
+button1P1 = Button(frameP1, text="Variables discrètes", font=f, command=page2, relief="sunken")
 button1P1.pack(fill=BOTH, side=LEFT, pady=40, padx=20)
 button2P1= Button(frameP1, text="Variables continues", font=f, command=page3)
 button2P1.pack(fill=BOTH, side=RIGHT, pady=40, padx=20)
@@ -97,15 +121,15 @@ s1= SEPARATOR
 #frame n°1
 frameP22 = Frame(frameP2)
 nbVarLabel = Label(frameP22, text=t1, font=f2)
-nbVarLabel.grid(row=0, column=0, pady=10, padx=5)
+nbVarLabel.grid(row=0, column=0, pady=10, padx=(50, 5))
 nbVarEntry = Entry(frameP22, font=f2, bg = "#defcfb")
 nbVarEntry.grid(row=0, column=1, pady=10, padx=5)
 nbVarValid = Button(frameP22, text="Valider", font=f2, command=valid)
-nbVarValid.grid(row=1, column=0, pady=10, padx=5, columnspan=2)
+nbVarValid.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
 frameP22.pack(fill=X)
 
 # Bouton Retour
-buttonP2= Button(frameP2, text="Retour", font=f, command=page1)
+buttonP2= Button(frameP2, text="Retour", font=f, command=page1, relief="sunken")
 buttonP2.pack(fill=X, side=BOTTOM, pady=40, padx=20)
 
 # PAGE NUMERO 3
@@ -117,7 +141,7 @@ labelP3.pack(expand=True, fill=BOTH)
 subLabelP3.pack(expand=True, fill=BOTH)
 imageP3 = PhotoImage(file="Vatecedi2.png")
 imgP3 = Label(frameP3, image=imageP3).pack(expand=True, fill=BOTH)
-buttonP3= Button(frameP3, text="Retour", font=f, command=page1)
+buttonP3= Button(frameP3, text="Retour", font=f, command=page1, relief="sunken")
 buttonP3.pack(fill=X, side=BOTTOM, pady=40, padx=20)
 
 window.mainloop()
