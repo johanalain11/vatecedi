@@ -12,11 +12,11 @@ window.wm_iconphoto(True, icon)
 f=("Helvetica", 18, "bold")
 f2=("Helvetica", 15)
 t1="Entrer le nombre de variables: "
-i = 1
+i = 0
 boolean = False
 T = zeros((2, 30), int)
 a = 0
-nbVar = None
+nbVar: int = 0
 
 def page1():
     frameP1.pack(fill=BOTH, expand=True)
@@ -52,45 +52,47 @@ def valid():
             nbVarValid.config(text="OK")
             nbVarEntry.delete(0, END)
             nbVarEntry.config(bg = "white", fg = "black")
-            nbVarLabel.config(text="Entrer X[{}]: ".format(i))
+            nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
     elif nbVarValid.cget("text") == "OK":
-        saveData(nbVar)
-        if i == nbVar :
-            if boolean == False :
-                boolean = True
-                i = 1
-                a = 1
+        saveData()
+        if (i == nbVar) & (boolean == False) :
+            boolean = True
+            i = 0
+            a = 1
+            nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
+        elif (i < nbVar-1) & boolean == True :
+            nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
         elif (i == nbVar-1) & boolean == True :
             nbVarValid.config(text="Calculer")
+            nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
     elif nbVarValid.cget("text") == "Calculer":
-        saveData(nbVar)
+        saveData()
         nbVarEntry.config(bg = "black", fg = "white")
         nbVarLabel.config(text="Résultats", bg='#defcfb')
         afficherMatrice(T, nbVar, 2)
         nbVarValid.config(state=DISABLED)
 
 
-def saveData(nbVar: int = nbVar) :
-    global T, i, a
+def saveData() :
+    global T, i, a, nbVar
     print("**** Bouton OK cliqué")
-    if i in range(1, nbVar+1) :
+    if i in range(0, nbVar) :
         c = nbVarEntry.get()
-        T[a, i-1] = int(c)
+        T[a, i] = int(c)
         nbVarEntry.delete(0, END)
         print("a = " + str(a))
         print("Valeur entrée: " + c)
         # nbVarEntry.config(bg="white", fg = "black")
         i = i + 1
-        if a == 0:
-            nbVarLabel.config(text="Entrer X[{}]: ".format(i))
-        else:
-            nbVarLabel.config(text="Entrer n[{}]: ".format(i))
+        if a == 0  :
+        #else:
+            nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
         nbVarValid.flash()
     else :
         print("Valeur non entrée")
         nbVarValid.config(text="Calculer")
     print("i = " + str(i))
-    return nbVar, i
+
 
 
 # PREMIERE PAGE
