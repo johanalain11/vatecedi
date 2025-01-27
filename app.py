@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter.ttk import Treeview
+
 from varDiscrete import *
 from varContinue import *
 
@@ -70,6 +72,7 @@ def valid():
         nbVarEntry.config(bg = "black", fg = "white")
         nbVarLabel.config(text="Résultats", bg='#defcfb')
         afficherMatrice(T, nbVar, 2)
+        afficher_tableau()
         nbVarValid.config(state=DISABLED)
 
 
@@ -93,6 +96,19 @@ def saveData() :
         nbVarValid.config(text="Calculer")
     print("i = " + str(i))
 
+def afficher_tableau():
+    global T, nbVar
+    colonnes = ("Xi", "ni")
+    tableau = Treeview(frameP23, columns=colonnes, show="headings")
+    for col in colonnes:
+        tableau.heading(col, text=col)
+        tableau.column(col, width=100, anchor="center")
+
+    k = 0
+    for lignes in list(zip(*T)) :
+        tableau.insert("", END, values=lignes)
+
+    tableau.pack(fill=BOTH, expand=True)
 
 
 # PREMIERE PAGE
@@ -129,6 +145,10 @@ nbVarEntry.grid(row=0, column=1, pady=10, padx=5)
 nbVarValid = Button(frameP22, text="Valider", font=f2, command=valid)
 nbVarValid.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
 frameP22.pack(fill=X)
+
+#frame n°2
+frameP23 = Frame(frameP2)
+frameP23.pack(fill="both", expand=True, padx=10, pady=10)
 
 # Bouton Retour
 buttonP2= Button(frameP2, text="Retour", font=f, command=page1, relief="sunken")
