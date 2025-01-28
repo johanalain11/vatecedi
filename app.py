@@ -16,7 +16,7 @@ f2=("Helvetica", 15)
 t1="Entrer le nombre de variables: "
 i = 0
 boolean = False
-T = zeros((2, 30), int)
+T = zeros((3, 30), int)
 a = 0
 nbVar: int = 0
 
@@ -98,17 +98,66 @@ def saveData() :
 
 def afficher_tableau():
     global T, nbVar
-    colonnes = ("Xi", "ni")
-    tableau = Treeview(frameP23, columns=colonnes, show="headings")
     for col in colonnes:
         tableau.heading(col, text=col)
         tableau.column(col, width=100, anchor="center")
 
     k = 0
     for lignes in list(zip(*T)) :
-        tableau.insert("", END, values=lignes)
+        if k < nbVar:
+            tableau.insert("", END, values=lignes)
+            k = k+1
 
+    calcul_discrete()
     tableau.pack(fill=BOTH, expand=True)
+
+def calcul_discrete():
+    global T, nbVar, tableau
+    N = somme(T, nbVar, 1)
+    T1 = ECC(T, nbVar, 1)
+    t1 = " ".join(map(str, T1))
+    T2 = FCC(T1, nbVar)
+    t2 = " ".join(map(str, T2))
+    print("VALEURS DE TENDANCE CENTRALE")
+    Mo = mode(T, nbVar)
+    M = moyenne(T, nbVar, 1)
+    Me = quartile(T, T1, N, 0.5)
+    Q1 = quartile(T, T1, N, 0.25)
+    Q2 = quartile(T, T1, N, 0.5)
+    Q3 = quartile(T, T1, N, 0.75)
+    print("VALEURS DE DISPERSION")
+    V = variance(T, nbVar, N, M)
+    E = ecartType(V)
+    Iq = intervalle_interquartile(Q1, Q3)
+    e = etendu(T1, nbVar)
+    coef = coef_variation(E, M)
+    C = "TENDANCES CENTRALES"
+    D = "DE DISPERSION"
+    t = "--------------"
+    valeurs = [
+        ("--------------", t),
+        ("VALEURS DE ", C),
+        ("Somme", N),
+        ("Effectifs cumulés", T1),
+        ("Fréquences cumulées", T2),
+        ("Mode", Mo),
+        ("Moyenne", M),
+        ("Médiane", Me),
+        ("1er quartile", Q1),
+        ("2e quartile", Q2),
+        ("3e quartile", Q3),
+        ("--------------", t),
+        ("VALEURS DE ", D),
+        ("Variance", V),
+        ("Écart-Type", E),
+        ("Intervalle Interquartile", Iq),
+        ("Étendue", e),
+        ("Coef de Variation", coef)
+    ]
+
+    # Ajout des lignes au tableau Treeview
+    for idx, (nom, valeur) in enumerate(valeurs, start=0):
+        tableau.insert("", "end", values=(nom, valeur))
 
 
 # PREMIERE PAGE
@@ -149,6 +198,8 @@ frameP22.pack(fill=X)
 #frame n°2
 frameP23 = Frame(frameP2)
 frameP23.pack(fill="both", expand=True, padx=10, pady=10)
+colonnes = ("Xi", "ni")
+tableau = Treeview(frameP23, columns=colonnes, show="headings")
 
 # Bouton Retour
 buttonP2= Button(frameP2, text="Retour", font=f, command=page1, relief="sunken")

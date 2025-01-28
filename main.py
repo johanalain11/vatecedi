@@ -72,7 +72,7 @@ if v == 1:
     E = ecartType(V)
     Iq = intervalle_interquartile(Q1, Q3)
     e = etendu(T1, C)
-    coef = coef_variartion(E, M)
+    coef = coef_variation(E, M)
 else:
     print("______VARIABLE CONTINUE______")
     T = zeros((3, C), int)

@@ -124,7 +124,7 @@ def etendu(T1, C):
     return e
 
 
-def coef_variartion(E, M):
+def coef_variation(E, M):
     coef = E / M
     print("Coefficient de variation = " + str(coef))
     return coef
