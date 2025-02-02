@@ -217,4 +217,16 @@ imgP3 = Label(frameP3, image=imageP3).pack(expand=True, fill=BOTH)
 buttonP3= Button(frameP3, text="Retour", font=f, command=page1, relief="sunken")
 buttonP3.pack(fill=X, side=BOTTOM, pady=40, padx=20)
 
+#frame n°1
+frameP32 = Frame(frameP3)
+nbVarLabel2 = Label(frameP32, text=t1, font=f2)
+nbVarLabel2.grid(row=0, column=0, pady=10, padx=(50, 5))
+nbVarEntry2 = Entry(frameP32, font=f2, bg= "#defcfb")
+nbVarEntry2.grid(row=0, column=1, pady=10, padx=5)
+nbVarEntry3 = Entry(frameP32, font=f2, bg= "#defcfb")
+nbVarEntry3.grid(row=0, column=2, pady=10, padx=5)
+nbVarValid2 = Button(frameP32, text="Valider", font=f2 )
+nbVarValid2.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
+frameP32.pack(fill=X)
+
 window.mainloop()
