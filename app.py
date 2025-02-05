@@ -221,10 +221,19 @@ buttonP3.pack(fill=X, side=BOTTOM, pady=40, padx=20)
 frameP32 = Frame(frameP3)
 nbVarLabel2 = Label(frameP32, text=t1, font=f2)
 nbVarLabel2.grid(row=0, column=0, pady=10, padx=(50, 5))
+nb1 = Label(frameP32, text="[", font=f2).grid(row=0, column=1, padx=3)
+
 nbVarEntry2 = Entry(frameP32, font=f2, bg= "#defcfb")
-nbVarEntry2.grid(row=0, column=1, pady=10, padx=5)
+nbVarEntry2.config(width=6 )
+nbVarEntry2.grid(row=0, column=2, pady=10, padx=5)
+nb2 = Label(frameP32, text=";", font=f2).grid(row=0, column=3, padx=3)
+
 nbVarEntry3 = Entry(frameP32, font=f2, bg= "#defcfb")
-nbVarEntry3.grid(row=0, column=2, pady=10, padx=5)
+nbVarEntry3.config(width=6 )
+nbVarEntry3.grid(row=0, column=4, pady=10, padx=5)
+nb3 = Label(frameP32, text="]", font=f2).grid(row=0, column=5, padx=3)
+
+
 nbVarValid2 = Button(frameP32, text="Valider", font=f2 )
 nbVarValid2.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
 frameP32.pack(fill=X)
