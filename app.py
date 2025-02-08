@@ -1,3 +1,5 @@
+import os
+import sys
 from tkinter import *
 from tkinter.ttk import Treeview
 
@@ -19,28 +21,34 @@ boolean = False
 T = zeros((3, 30), int)
 a = 0
 nbVar: int = 0
+vartype = ""
 
 def page1():
-    frameP1.pack(fill=BOTH, expand=True)
-    frameP2.pack_forget()
-    frameP3.pack_forget()
+    os.execv(sys.executable, ['python'] + sys.argv)
 
 def page2():
+    global vartype
+    vartype = "discrete"
     frameP2.pack(fill=BOTH, expand=True)
     frameP1.pack_forget()
     frameP3.pack_forget()
 
 def page3():
+    global vartype
+    vartype = "continue"
     frameP3.pack(fill=BOTH, expand=True)
     frameP2.pack_forget()
     frameP1.pack_forget()
 
 # Fonction qui enregistre le nombre de variables
 def valid():
-    global nbVar, i, boolean, a
-    if nbVarValid.cget("text") == "Valider":
-        y = nbVarEntry.get()
-        print("**** Bouton Valider cliqué")
+    global nbVar, i, boolean, a, vartype
+    if nbVarValid.cget("text") == "Valider" or nbVarValid2.cget("text") == "Valider":
+        if vartype == "discrete" :
+            y = nbVarEntry.get()
+        else :
+            y = nbVarEntry2.get()
+        print("**** Bouton Valider {} cliqué".format(vartype))
         try :
             nbVar = int(y)
             if nbVar <= 0 :
@@ -52,21 +60,46 @@ def valid():
             print("i = " + str(i))
             print("nbVar = ", nbVar)
             nbVarValid.config(text="OK")
-            nbVarEntry.delete(0, END)
-            nbVarEntry.config(bg = "white", fg = "black")
-            nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
-    elif nbVarValid.cget("text") == "OK":
+            if vartype == "discrete" :
+                nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
+                nbVarEntry.delete(0, END)
+                nbVarEntry.config(bg = "white", fg = "black")
+            else :
+                nb1.grid(row=0, column=1, padx=3)
+                nbVarEntry2.grid(row=0, column=2, pady=10, padx=5)
+                nbVarEntry2.config(width=6)
+                nb2.grid(row=0, column=3, padx=3)
+                nbVarEntry3.grid(row=0, column=4, pady=10, padx=5)
+                nb3.grid(row=0, column=5, padx=3)
+                nbVarValid2.config(text="OK")
+                nbVarEntry2.delete(0, END)
+                nbVarEntry2.config(bg = "#defcfb", fg = "black")
+                nbVarLabel2.config(text="Entrer [x{}; y{}] : ".format(i+1, i+1))
+
+    elif nbVarValid.cget("text") == "OK" or nbVarValid2.cget("text") == "OK" :
         saveData()
         if (i == nbVar) & (boolean == False) :
             boolean = True
             i = 0
             a = 1
             nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
+            if vartype == "continue" :
+                nbVarLabel2.config(text="Entrer n[{}]: ".format(i+1))
+                nb1.destroy()
+                nb2.destroy()
+                nb3.destroy()
+                nbVarEntry3.grid_forget()
+                nbVarEntry2.grid(row=0, column=1, pady=10, padx=5)
+                nbVarEntry2.config(width=12)
         elif (i < nbVar-1) & boolean == True :
             nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
+            if vartype == "continue" :
+                nbVarLabel2.config(text="Entrer n[{}]: ".format(i+1))
         elif (i == nbVar-1) & boolean == True :
             nbVarValid.config(text="Calculer")
             nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
+            if vartype == "continue" :
+                nbVarLabel2.config(text="Entrer n[{}]: ".format(i+1))
     elif nbVarValid.cget("text") == "Calculer":
         saveData()
         nbVarEntry.config(bg = "black", fg = "white")
@@ -77,20 +110,32 @@ def valid():
 
 
 def saveData() :
-    global T, i, a, nbVar
+    global T, i, a, nbVar, vartype
     print("**** Bouton OK cliqué")
     if i in range(0, nbVar) :
-        c = nbVarEntry.get()
-        T[a, i] = int(c)
-        nbVarEntry.delete(0, END)
-        print("a = " + str(a))
-        print("Valeur entrée: " + c)
-        # nbVarEntry.config(bg="white", fg = "black")
         i = i + 1
-        if a == 0  :
-        #else:
-            nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
-        nbVarValid.flash()
+        print("a = " + str(a))
+
+        if vartype == "discrete" :
+            c = nbVarEntry.get()
+            print("Valeur entrée: " + c)
+            T[a, i] = int(c)
+            nbVarEntry.delete(0, END)
+            if a == 0  :
+                nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
+            nbVarValid.flash()
+        else :  # Si c'est une variable continue
+            d = nbVarEntry2.get()
+            e = nbVarEntry3.get()
+            print("Valeur entrée x : " + d)
+            print("Valeur entrée y : " + e)
+            T[a, i] = int(d)
+            T[a+1, i] = int(e)
+            nbVarEntry2.delete(0, END)
+            nbVarEntry3.delete(0, END)
+            if a == 0  :
+                nbVarLabel2.config(text="Entrer [x{}; y{}] : ".format(i+1, i+1))
+            nbVarValid2.flash()
     else :
         print("Valeur non entrée")
         nbVarValid.config(text="Calculer")
@@ -154,7 +199,6 @@ def calcul_discrete():
         ("Étendue", e),
         ("Coef de Variation", coef)
     ]
-
     # Ajout des lignes au tableau Treeview
     for idx, (nom, valeur) in enumerate(valeurs, start=0):
         tableau.insert("", "end", values=(nom, valeur))
@@ -221,20 +265,18 @@ buttonP3.pack(fill=X, side=BOTTOM, pady=40, padx=20)
 frameP32 = Frame(frameP3)
 nbVarLabel2 = Label(frameP32, text=t1, font=f2)
 nbVarLabel2.grid(row=0, column=0, pady=10, padx=(50, 5))
-nb1 = Label(frameP32, text="[", font=f2).grid(row=0, column=1, padx=3)
 
 nbVarEntry2 = Entry(frameP32, font=f2, bg= "#defcfb")
-nbVarEntry2.config(width=6 )
-nbVarEntry2.grid(row=0, column=2, pady=10, padx=5)
-nb2 = Label(frameP32, text=";", font=f2).grid(row=0, column=3, padx=3)
+nbVarEntry2.grid(row=0, column=1, pady=10, padx=5)
 
 nbVarEntry3 = Entry(frameP32, font=f2, bg= "#defcfb")
 nbVarEntry3.config(width=6 )
-nbVarEntry3.grid(row=0, column=4, pady=10, padx=5)
-nb3 = Label(frameP32, text="]", font=f2).grid(row=0, column=5, padx=3)
 
+nb1 = Label(frameP32, text="[", font=f2)
+nb2 = Label(frameP32, text=";", font=f2)
+nb3 = Label(frameP32, text="]", font=f2)
 
-nbVarValid2 = Button(frameP32, text="Valider", font=f2 )
+nbVarValid2 = Button(frameP32, text="Valider", font=f2, command=valid)
 nbVarValid2.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
 frameP32.pack(fill=X)
 
