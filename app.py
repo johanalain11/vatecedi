@@ -60,6 +60,7 @@ def valid():
             print("i = " + str(i))
             print("nbVar = ", nbVar)
             nbVarValid.config(text="OK")
+            nbVarValid2.config(text="OK")
             if vartype == "discrete" :
                 nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
                 nbVarEntry.delete(0, END)
@@ -72,6 +73,7 @@ def valid():
                 nbVarEntry3.grid(row=0, column=4, pady=10, padx=5)
                 nb3.grid(row=0, column=5, padx=3)
                 nbVarValid2.config(text="OK")
+                nbVarValid.config(text="OK")
                 nbVarEntry2.delete(0, END)
                 nbVarEntry2.config(bg = "#defcfb", fg = "black")
                 nbVarLabel2.config(text="Entrer [x{}; y{}] : ".format(i+1, i+1))
@@ -97,24 +99,29 @@ def valid():
                 nbVarLabel2.config(text="Entrer n[{}]: ".format(i+1))
         elif (i == nbVar-1) & boolean == True :
             nbVarValid.config(text="Calculer")
+            nbVarValid2.config(text="Calculer")
             nbVarLabel.config(text="Entrer n[{}]: ".format(i+1))
             if vartype == "continue" :
                 nbVarLabel2.config(text="Entrer n[{}]: ".format(i+1))
     elif nbVarValid.cget("text") == "Calculer":
         saveData()
-        nbVarEntry.config(bg = "black", fg = "white")
-        nbVarLabel.config(text="Résultats", bg='#defcfb')
-        afficherMatrice(T, nbVar, 2)
+        if vartype == "discrete" :
+            nbVarEntry.config(bg = "black", fg = "white")
+            nbVarLabel.config(text="Résultats", bg='#defcfb')
+            afficherMatrice(T, nbVar, 2)
+            nbVarValid.config(state=DISABLED)
+        else:
+            nbVarEntry2.config(bg = "black", fg = "white")
+            nbVarLabel2.config(text="Résultats", bg='#defcfb')
+            afficherMatrice(T, nbVar, 3)
+            nbVarValid2.config(state=DISABLED)
         afficher_tableau()
-        nbVarValid.config(state=DISABLED)
 
 
 def saveData() :
     global T, i, a, nbVar, vartype
     print("**** Bouton OK cliqué")
     if i in range(0, nbVar) :
-        i = i + 1
-        print("a = " + str(a))
 
         if vartype == "discrete" :
             c = nbVarEntry.get()
@@ -125,36 +132,59 @@ def saveData() :
                 nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
             nbVarValid.flash()
         else :  # Si c'est une variable continue
-            d = nbVarEntry2.get()
-            e = nbVarEntry3.get()
-            print("Valeur entrée x : " + d)
-            print("Valeur entrée y : " + e)
-            T[a, i] = int(d)
-            T[a+1, i] = int(e)
+            if a == 0:
+                d = nbVarEntry2.get()
+                e = nbVarEntry3.get()
+                T[a, i] = int(d)
+                T[a+1, i] = int(e)
+                print("Valeur entrée x : " + d)
+                print("Valeur entrée y : " + e)
+            else:
+                d = nbVarEntry2.get()
+                T[2, i] = int(d)
+                print("Valeur entrée n : " + d)
+                afficherMatrice(T, nbVar, 3)
             nbVarEntry2.delete(0, END)
             nbVarEntry3.delete(0, END)
             if a == 0  :
                 nbVarLabel2.config(text="Entrer [x{}; y{}] : ".format(i+1, i+1))
             nbVarValid2.flash()
+
+        i = i + 1
+        print("a = " + str(a))
     else :
         print("Valeur non entrée")
         nbVarValid.config(text="Calculer")
     print("i = " + str(i))
 
 def afficher_tableau():
-    global T, nbVar
-    for col in colonnes:
-        tableau.heading(col, text=col)
-        tableau.column(col, width=100, anchor="center")
+    global T, nbVar, colonnes, colonnes2, vartype
+    if vartype == "continue":
+        for col in colonnes2:
+            tableau2.heading(col, text=col)
+            tableau2.column(col, width=100, anchor="center")
 
-    k = 0
-    for lignes in list(zip(*T)) :
-        if k < nbVar:
-            tableau.insert("", END, values=lignes)
-            k = k+1
+        k = 0
+        for lignes in list(zip(*T)) :
+            if k < nbVar:
+                tableau2.insert("", END, values=lignes)
+                k = k+1
 
-    calcul_discrete()
-    tableau.pack(fill=BOTH, expand=True)
+        # calcul_discrete()
+        tableau2.pack(fill=BOTH, expand=True)
+    else:
+        for col in colonnes:
+            tableau.heading(col, text=col)
+            tableau.column(col, width=100, anchor="center")
+
+        k = 0
+        for lignes in list(zip(*T)) :
+            if k < nbVar:
+                tableau.insert("", END, values=lignes)
+                k = k+1
+
+        # calcul_discrete()
+        tableau.pack(fill=BOTH, expand=True)
 
 def calcul_discrete():
     global T, nbVar, tableau
@@ -279,5 +309,11 @@ nb3 = Label(frameP32, text="]", font=f2)
 nbVarValid2 = Button(frameP32, text="Valider", font=f2, command=valid)
 nbVarValid2.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
 frameP32.pack(fill=X)
+
+#frame n°2
+frameP33 = Frame(frameP3)
+frameP33.pack(fill="both", expand=True, padx=10, pady=10)
+colonnes2 = ("Xi", "Yi", "ni")
+tableau2 = Treeview(frameP33, columns=colonnes2, show="headings")
 
 window.mainloop()
