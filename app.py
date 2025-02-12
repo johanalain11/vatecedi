@@ -55,6 +55,7 @@ def valid():
                 raise ValueError
         except :
             nbVarEntry.config(bg='red', fg='white')
+            nbVarEntry2.config(bg='red', fg='white')
         else :
             print("a = " + str(a))
             print("i = " + str(i))
