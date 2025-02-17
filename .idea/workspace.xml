@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="UPDATE App.py - Enregistrement valeurs - var continues OK">
+    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="UPDATE App.py - Affichage valeurs - var continues OK">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.main (2).executor": "Run",
-    "Python.main.executor": "Run",
+    "Python.main.executor": "Debug",
     "Python.varDiscrete.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -284,7 +283,31 @@
       <option name="project" value="LOCAL" />
       <updated>1739058592919</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="UPDATE App.py - Affichage valeurs - var continues OK">
+      <option name="closed" value="true" />
+      <created>1739102989183</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1739102989183</updated>
+    </task>
+    <task id="LOCAL-00022" summary="UPDATE App.py - Affichage valeurs - var continues OK">
+      <option name="closed" value="true" />
+      <created>1739103037042</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1739103037042</updated>
+    </task>
+    <task id="LOCAL-00023" summary="UPDATE App.py - Affichage valeurs - var continues OK">
+      <option name="closed" value="true" />
+      <created>1739400988282</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1739400988282</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -300,15 +323,21 @@
     <MESSAGE value="UPDATE App.py - Affichage tableau ET résultats var discretes OK" />
     <MESSAGE value="UPDATE App.py - Frames - var continues OK" />
     <MESSAGE value="UPDATE App.py - Enregistrement valeurs - var continues OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="UPDATE App.py - Enregistrement valeurs - var continues OK" />
+    <MESSAGE value="UPDATE App.py - Affichage valeurs - var continues OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="UPDATE App.py - Affichage valeurs - var continues OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="NONE" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>82</line>
+          <line>83</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>219</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

@@ -160,20 +160,7 @@ def saveData() :
 
 def afficher_tableau():
     global T, nbVar, colonnes, colonnes2, vartype
-    if vartype == "continue":
-        for col in colonnes2:
-            tableau2.heading(col, text=col)
-            tableau2.column(col, width=100, anchor="center")
-
-        k = 0
-        for lignes in list(zip(*T)) :
-            if k < nbVar:
-                tableau2.insert("", END, values=lignes)
-                k = k+1
-
-        # calcul_discrete()
-        tableau2.pack(fill=BOTH, expand=True)
-    else:
+    if vartype == "discrete":
         for col in colonnes:
             tableau.heading(col, text=col)
             tableau.column(col, width=100, anchor="center")
@@ -184,25 +171,53 @@ def afficher_tableau():
                 tableau.insert("", END, values=lignes)
                 k = k+1
 
-        # calcul_discrete()
+        calcul_statistique()
         tableau.pack(fill=BOTH, expand=True)
+    else:
+        for col in colonnes2:
+            tableau2.heading(col, text=col)
+            tableau2.column(col, width=100, anchor="center")
 
-def calcul_discrete():
-    global T, nbVar, tableau
-    N = somme(T, nbVar, 1)
-    T1 = ECC(T, nbVar, 1)
+        k = 0
+        for lignes in list(zip(*T)) :
+            if k < nbVar:
+                tableau2.insert("", END, values=lignes)
+                k = k+1
+
+        calcul_statistique()
+        tableau2.pack(fill=BOTH, expand=True)
+
+def calcul_statistique():
+    global T, nbVar, tableau, vartype
+    if vartype == "discrete":
+        N = somme(T, nbVar, 1)
+        T1 = ECC(T, nbVar, 1)
+        T2 = FCC(T1, nbVar)
+        print("VALEURS DE TENDANCE CENTRALE")
+        Mo = mode(T, nbVar)
+        M = moyenne(T, nbVar, 1)
+        Me = quartile(T, T1, N, 0.5)
+        Q1 = quartile(T, T1, N, 0.25)
+        Q2 = quartile(T, T1, N, 0.5)
+        Q3 = quartile(T, T1, N, 0.75)
+        V = variance(T, nbVar, N, M)
+    else:
+        N = somme(T, nbVar, 2)
+        T1 = ECC(T, nbVar, 2)
+        T2 = FCC(T1, nbVar)
+        print("VALEURS DE TENDANCE CENTRALE")
+        tab = densite_frequence(T, nbVar, N)
+        cm = classe_modale(T, tab, nbVar)
+        Mo = modeC(T, tab, cm, nbVar)
+        M = moyenneC(T, nbVar, 2)
+        Me = quartileC(T, T1, T2, tab, N, nbVar, 0.5)
+        Q1 = quartileC(T, T1, T2, tab, N, nbVar, 0.25)
+        Q2 = quartileC(T, T1, T2, tab, N, nbVar, 0.5)
+        Q3 = quartileC(T, T1, T2, tab, N, nbVar, 0.75)
+        V = varianceC(T, nbVar, N, M)
     t1 = " ".join(map(str, T1))
-    T2 = FCC(T1, nbVar)
     t2 = " ".join(map(str, T2))
-    print("VALEURS DE TENDANCE CENTRALE")
-    Mo = mode(T, nbVar)
-    M = moyenne(T, nbVar, 1)
-    Me = quartile(T, T1, N, 0.5)
-    Q1 = quartile(T, T1, N, 0.25)
-    Q2 = quartile(T, T1, N, 0.5)
-    Q3 = quartile(T, T1, N, 0.75)
     print("VALEURS DE DISPERSION")
-    V = variance(T, nbVar, N, M)
     E = ecartType(V)
     Iq = intervalle_interquartile(Q1, Q3)
     e = etendu(T1, nbVar)
@@ -231,8 +246,12 @@ def calcul_discrete():
         ("Coef de Variation", coef)
     ]
     # Ajout des lignes au tableau Treeview
-    for idx, (nom, valeur) in enumerate(valeurs, start=0):
-        tableau.insert("", "end", values=(nom, valeur))
+    if vartype == "discrete" :
+        for idx, (nom, valeur) in enumerate(valeurs, start=0):
+            tableau.insert("", "end", values=(nom, valeur))
+    else:
+        for idx, (nom, valeur) in enumerate(valeurs, start=0):
+            tableau2.insert("", "end", values=(nom, valeur))
 
 
 # PREMIERE PAGE
