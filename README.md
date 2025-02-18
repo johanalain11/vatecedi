@@ -8,20 +8,20 @@ Ce projet permet **d'automatiser le calcul des valeurs des effectifs d'une popul
 Il facilite le calcul des **mesures de tendance centrale** (moyenne, médiane, mode) et des **mesures de dispersion** (écart-type, variance, étendue, etc.).
 
 ## 🚀 Fonctionnalités
+
+![Fonctionnalités](./images/fonctionnalites.png "Fonctionnalités de Vatecedi")
 ✅ Calcul automatique des statistiques pour les **variables discrètes et continues**
  ✅ Exécution en **interface graphique** ou sur le **terminal**
- ✅ Mesures de **tendance centrale** (moyenne, médiane, mode) 
- ✅ Mesures de **dispersion** (écart-type, variance, étendue, quartiles) 
- ✅ Interface graphique avec **Tkinter** 
- ✅ Lecture des **fichiers en entrée** et export des résultats 
- ✅ Gestion des **erreurs et fichiers systèmes** avec `os` et `sys`
+ ✅ Calcul de la moyenne, effectifs et fréquences cumulées
+ ✅ Mesures de **tendance centrale** (moyenne, médiane, mode/classe modale) 
+ ✅ Mesures de **dispersion** (écart-type, variance, étendue, quartiles, coefficient de variation) 
 
 ## 🛠️ Technologies utilisées
-- 🐍 **Python** - Langage principal 
-- 🧮 **NumPy** - Calculs mathématiques avancés
-- 📏 **math** - Fonctions mathématiques intégrées
-- 🖥 **os & sys** - Gestion des fichiers et du système 
+- 🐍 **Python** - Langage principal  
 - 🖼 **Tkinter** - Interface graphique
+- 📏 **math** - Fonctions mathématiques intégrées
+- 🧮 **NumPy** - Calculs mathématiques avancés
+- 🖥 **os & sys** - Gestion des fichiers et du système
 
 ## 📦 Installation et Utilisation
 
@@ -39,24 +39,24 @@ pip install numpy
 ### 3️⃣ Lancer le script
 
 Interface graphique
-`python3 app.py` 
+`python app.py` 
 
 Terminal
 `python main.py`
 
 ## 📂 Structure du projet
 
-/src
-├── /images 	# Dossier des images
-	├── cluster.png       # Icône de l'application visible sur Windows
-	├── Vatecedi.png	# Illustration de tableau de variables dicrètes
-	├── Vatecedi2.png	# Illustration de tableau de variables continues
-├── /modules 	# Dossier des fonctions
-	├── varContinue.py # Fonctions concernant les variables continues
-	├── varDiscrete.py   # Fonctions concernant les variables discrètes
+>/src
+ ├── /images 	# Dossier des images
+ 	 ├── cluster.png       # Icône de l'application visible sur Windows
+	 ├── Vatecedi.png	# Illustration de tableau de variables dicrètes
+	 ├── Vatecedi2.png	# Illustration de tableau de variables continues
+ ├── /modules 	# Dossier des fonctions
+	 ├── varContinue.py # Fonctions concernant les variables continues
+	 ├── varDiscrete.py   # Fonctions concernant les variables discrètes
  ├── app.py          	# Interface graphique avec Tkinter
  ├── main.py     	# Script principal
- ├── Readme.md      	 # Documentation du projet
+├── Readme.md      	 # Documentation du projet`
 
 
 ## 🎨 Aperçu de l'Interface
@@ -70,6 +70,7 @@ Terminal
 >[!NOTE]
 >
 >* Améliorer l'interface avec customTkinter
+>* Ajouter l'interprétation des résultats et l'affichage de graphiques
 >* Ajouter les fonctionnalités de chargement des données avec des fichiers CSV
 >* Gérer les erreurs potentielles, comme des entrées invalides ou des dépassements de mémoire.
 

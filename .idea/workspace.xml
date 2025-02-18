@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="UPDATE App.py - Calculs et affichages - var continues OK">
-      <change afterPath="$PROJECT_DIR$/images/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/__init__.py" afterDir="false" />
+    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="Version 1.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vatecedi.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Vatecedi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vatecedi2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Vatecedi2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/cluster.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/varContinue.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/varContinue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/varDiscrete.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/varDiscrete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,19 +58,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "Python.main (2).executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.varDiscrete.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/johan/PROJET COMPÉTENCES JOHAN/Projet 2.7",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.varDiscrete.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/johan/PROJET COMPÉTENCES JOHAN/Projet 2.7&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="Projet 2.7" is-module-sdk="true">
@@ -355,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739834464864</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Version 1.0">
+      <option name="closed" value="true" />
+      <created>1739882464606</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1739882464606</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -373,7 +373,8 @@
     <MESSAGE value="UPDATE App.py - Enregistrement valeurs - var continues OK" />
     <MESSAGE value="UPDATE App.py - Affichage valeurs - var continues OK" />
     <MESSAGE value="UPDATE App.py - Calculs et affichages - var continues OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="UPDATE App.py - Calculs et affichages - var continues OK" />
+    <MESSAGE value="Version 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
