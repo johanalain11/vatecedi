@@ -5,10 +5,11 @@
 
 ## 📖 Description
 Ce projet permet **d'automatiser le calcul des valeurs des effectifs d'une population** pour des variables **discrètes** ou **continues**.  
-Il facilite le calcul des **mesures de tendance centrale** (moyenne, médiane, mode) et des **mesures de dispersion** (écart-type, variance, amplitude, etc.).
+Il facilite le calcul des **mesures de tendance centrale** (moyenne, médiane, mode) et des **mesures de dispersion** (écart-type, variance, étendue, etc.).
 
 ## 🚀 Fonctionnalités
 ✅ Calcul automatique des statistiques pour les **variables discrètes et continues**
+ ✅ Exécution en **interface graphique** ou sur le **terminal**
  ✅ Mesures de **tendance centrale** (moyenne, médiane, mode) 
  ✅ Mesures de **dispersion** (écart-type, variance, étendue, quartiles) 
  ✅ Interface graphique avec **Tkinter** 
@@ -37,21 +38,25 @@ pip install numpy
 
 ### 3️⃣ Lancer le script
 
-`python3 main.py` 
+Interface graphique
+`python3 app.py` 
+
+Terminal
+`python main.py`
 
 ## 📂 Structure du projet
 
 /src
- ├── /images # Dossier des images
-		  ├── cluster.png       # Icône de l'application visible sur Windows
-		  ├── Vatecedi.png		# Illustration de tableau de variables dicrètes
-		  ├── Vatecedi2.png		# Illustration de tableau de variables continues
- ├── /modules # Dossier des fonctions
-		  ├── varContinue.py # Fonctions concernant les variables continues
-		  ├── varDiscrete.py   # Fonctions concernant les variables discrètes
- ├── app.py          		# Interface graphique avec Tkinter
- ├── main.py        	# Script principal
- ├── Readme.md       # Documentation du projet
+├── /images 	# Dossier des images
+	├── cluster.png       # Icône de l'application visible sur Windows
+	├── Vatecedi.png	# Illustration de tableau de variables dicrètes
+	├── Vatecedi2.png	# Illustration de tableau de variables continues
+├── /modules 	# Dossier des fonctions
+	├── varContinue.py # Fonctions concernant les variables continues
+	├── varDiscrete.py   # Fonctions concernant les variables discrètes
+ ├── app.py          	# Interface graphique avec Tkinter
+ ├── main.py     	# Script principal
+ ├── Readme.md      	 # Documentation du projet
 
 
 ## 🎨 Aperçu de l'Interface
