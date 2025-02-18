@@ -10,11 +10,12 @@ Il facilite le calcul des **mesures de tendance centrale** (moyenne, médiane, m
 ## 🚀 Fonctionnalités
 
 ![Fonctionnalités](./images/fonctionnalites.png "Fonctionnalités de Vatecedi")
-✅ Calcul automatique des statistiques pour les **variables discrètes et continues**
- ✅ Exécution en **interface graphique** ou sur le **terminal**
- ✅ Calcul de la moyenne, effectifs et fréquences cumulées
- ✅ Mesures de **tendance centrale** (moyenne, médiane, mode/classe modale) 
- ✅ Mesures de **dispersion** (écart-type, variance, étendue, quartiles, coefficient de variation) 
+
+#### ✅ Calcul automatique des statistiques pour les **variables discrètes et continues**
+#### ✅ Exécution en **interface graphique** ou sur le **terminal**
+#### ✅ Calcul de la moyenne, effectifs et fréquences cumulées
+#### ✅ Mesures de **tendance centrale** (moyenne, médiane, mode/classe modale) 
+#### ✅ Mesures de **dispersion** (écart-type, variance, étendue, quartiles, coefficient de variation) 
 
 ## 🛠️ Technologies utilisées
 - 🐍 **Python** - Langage principal  
@@ -47,16 +48,16 @@ Terminal
 ## 📂 Structure du projet
 
 >/src
- ├── /images 	# Dossier des images
+#####  ├── /images 	# Dossier des images
  	 ├── cluster.png       # Icône de l'application visible sur Windows
 	 ├── Vatecedi.png	# Illustration de tableau de variables dicrètes
 	 ├── Vatecedi2.png	# Illustration de tableau de variables continues
- ├── /modules 	# Dossier des fonctions
+#####  ├── /modules 	# Dossier des fonctions
 	 ├── varContinue.py # Fonctions concernant les variables continues
 	 ├── varDiscrete.py   # Fonctions concernant les variables discrètes
- ├── app.py          	# Interface graphique avec Tkinter
- ├── main.py     	# Script principal
-├── Readme.md      	 # Documentation du projet`
+######  ├── app.py          	# Interface graphique avec Tkinter
+######  ├── main.py     	# Script principal
+###### ├── Readme.md      	 # Documentation du projet`
 
 
 ## 🎨 Aperçu de l'Interface
