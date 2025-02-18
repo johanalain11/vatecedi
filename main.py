@@ -1,10 +1,7 @@
-import app
-from varDiscrete import *
-from varContinue import *
-from app import *
+from modules.varDiscrete import *
+from modules.varContinue import *
 import os
 import sys
-from tkinter import *
 
 # En tête
 header = "PROGRAMME"

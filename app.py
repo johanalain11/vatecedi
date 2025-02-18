@@ -3,14 +3,14 @@ import sys
 from tkinter import *
 from tkinter.ttk import Treeview
 
-from varDiscrete import *
-from varContinue import *
+from modules.varDiscrete import *
+from modules.varContinue import *
 
 
 window = Tk()
 window.title("Valeurs de tendance centrale et de dispersion")
 window.minsize(720, 480)
-icon = PhotoImage(master=window, file='cluster.png')
+icon = PhotoImage(master=window, file='images/cluster.png')
 window.wm_iconphoto(True, icon)
 
 f=("Helvetica", 18, "bold")
@@ -275,7 +275,7 @@ labelP2 = Label(frameP2, text="Vatecedi", font=("Algerian", 23))
 subLabelP2= Label(frameP2, text="Variables discrètes", font=f)
 labelP2.pack(expand=True, fill=BOTH)
 subLabelP2.pack(expand=True, fill=BOTH)
-imageP2 = PhotoImage(file="Vatecedi.png")
+imageP2 = PhotoImage(file="images/Vatecedi.png")
 imgP2 = Label(frameP2, image=imageP2).pack(expand=True, fill=BOTH)
 s1= SEPARATOR
 
@@ -306,7 +306,7 @@ labelP3 = Label(frameP3, text="Vatecedi", font=("Algerian", 23))
 subLabelP3= Label(frameP3, text="Variables continues", font=f)
 labelP3.pack(expand=True, fill=BOTH)
 subLabelP3.pack(expand=True, fill=BOTH)
-imageP3 = PhotoImage(file="Vatecedi2.png")
+imageP3 = PhotoImage(file="images/Vatecedi2.png")
 imgP3 = Label(frameP3, image=imageP3).pack(expand=True, fill=BOTH)
 buttonP3= Button(frameP3, text="Retour", font=f, command=page1, relief="sunken")
 buttonP3.pack(fill=X, side=BOTTOM, pady=40, padx=20)
