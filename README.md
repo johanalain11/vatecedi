@@ -47,12 +47,12 @@ Terminal
 
 ## 📂 Structure du projet
 
->/src
-#####  ├── /images 	# Dossier des images
+>/vatecedi
+######  ├── /images 	# Dossier des images
  	 ├── cluster.png       # Icône de l'application visible sur Windows
 	 ├── Vatecedi.png	# Illustration de tableau de variables dicrètes
 	 ├── Vatecedi2.png	# Illustration de tableau de variables continues
-#####  ├── /modules 	# Dossier des fonctions
+######  ├── /modules 	# Dossier des fonctions
 	 ├── varContinue.py # Fonctions concernant les variables continues
 	 ├── varDiscrete.py   # Fonctions concernant les variables discrètes
 ######  ├── app.py          	# Interface graphique avec Tkinter
