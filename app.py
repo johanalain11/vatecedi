@@ -15,7 +15,7 @@ window.wm_iconphoto(True, icon)
 
 f=("Helvetica", 18, "bold")
 f2=("Helvetica", 15)
-t1="Entrer le nombre de variables: "
+t1="Entrer le nombre de variables:  "
 i = 0
 boolean = False
 T = zeros((3, 30), int)
