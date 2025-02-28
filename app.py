@@ -121,7 +121,7 @@ def valid():
 
 def saveData() :
     global T, i, a, nbVar, vartype
-    print("**** Bouton OK cliqué")
+    print("***** Bouton OK cliqué")
     if i in range(0, nbVar) :
 
         if vartype == "discrete" :
