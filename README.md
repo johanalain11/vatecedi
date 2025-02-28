@@ -39,10 +39,16 @@ pip install numpy
 
 ### 3️⃣ Lancer le script
 
-Interface graphique
+Dans le dossier __/src__, insérer dans votre terminal : 
+##### Exécutable
+Linux : `./dist/app`
+
+Windows: `./dist/app.exe`
+
+##### Interface graphique
 `python app.py` 
 
-Terminal
+##### Terminal
 `python main.py`
 
 ## 📂 Structure du projet
