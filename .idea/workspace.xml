@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="Update README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_02_2025_13_41_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_02_2025_13_41__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="67cea5d4-5114-466a-9424-b1d670d3c673" name="Changes" comment="Ajout de l'exécutable et mise à jour du README.md">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,7 +360,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739885979097</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Ajout de l'exécutable et mise à jour du README.md">
+      <option name="closed" value="true" />
+      <created>1740781888318</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1740781888318</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Ajout de l'exécutable et mise à jour du README.md">
+      <option name="closed" value="true" />
+      <created>1740782716229</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1740782716229</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -384,7 +396,8 @@
     <MESSAGE value="UPDATE App.py - Calculs et affichages - var continues OK" />
     <MESSAGE value="Version 1.0" />
     <MESSAGE value="Update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
+    <MESSAGE value="Ajout de l'exécutable et mise à jour du README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de l'exécutable et mise à jour du README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
