@@ -51,7 +51,7 @@ def valid():
         print("**** Bouton Valider {} cliqué".format(vartype))
         try :
             nbVar = int(y)
-            if nbVar <= 0 :
+            if nbVar <= 1 :
                 raise ValueError
         except :
             nbVarEntry.config(bg='red', fg='white')
@@ -130,7 +130,7 @@ def saveData() :
             T[a, i] = int(c)
             nbVarEntry.delete(0, END)
             if a == 0  :
-                nbVarLabel.config(text="Entrer X[{}]: ".format(i+1))
+                nbVarLabel.config(text="Entrer X[{}]: ".format(i+2))
             nbVarValid.flash()
         else :  # Si c'est une variable continue
             if a == 0:
@@ -148,7 +148,7 @@ def saveData() :
             nbVarEntry2.delete(0, END)
             nbVarEntry3.delete(0, END)
             if a == 0  :
-                nbVarLabel2.config(text="Entrer [x{}; y{}] : ".format(i+1, i+1))
+                nbVarLabel2.config(text="Entrer [x{}; y{}] : ".format(i+2, i+2))
             nbVarValid2.flash()
 
         i = i + 1
